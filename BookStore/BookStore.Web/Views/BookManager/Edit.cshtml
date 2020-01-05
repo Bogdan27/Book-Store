@@ -1,6 +1,4 @@
-﻿
-@model BookStore.Core.ViewModels.BookManagerViewModel
-
+﻿@model BookStore.Core.ViewModels.BookManagerViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -9,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm("Edit", "BookManager", FormMethod.Post, new {encType="multipart/form-data" }))
+@using (Html.BeginForm("Edit", "BookManager", FormMethod.Post, new { encType = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -19,11 +17,10 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Book.Id)
 
-        <div class="col-md-2">
-                <img class="img-responsive" scr="~/Content/BookImages/@Model.Book.Image" />
+        <div class="col-md-2" style="float:left">
+            <img class="img-responsive" src="~/Content/BookImages/@Model.Book.Image"  />
         </div>
-
-        <div class="col-md-10">
+        <div class="col-md-10" style="margin-left:400px">
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Book.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -68,11 +65,11 @@
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 }
 
-<div>
+<div style="margin-left:400px">
     @Html.ActionLink("Back to List", "Index")
 </div>
 
