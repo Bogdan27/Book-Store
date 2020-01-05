@@ -13,7 +13,7 @@ namespace BookStore.SQLDataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202001050118246_Initial"; }
+            get { return "202001050353132_Initial"; }
         }
         
         string IMigrationMetadata.Source
