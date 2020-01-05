@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Core.Models
 {
-    class Book
+    public class Book
     {
         public string Id { get; set; }
 
