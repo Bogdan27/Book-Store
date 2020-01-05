@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.Core.Models
 {
-    public class Book
+    public class Book : BookEntity
     {
-        public string Id { get; set; }
 
         [StringLength(20)]
         [DisplayName("Book Name")]
@@ -21,10 +20,6 @@ namespace BookStore.Core.Models
         public string Genre { get; set; }
         public string Image { get; set; }
 
-        public Book()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
 
     }
 }
