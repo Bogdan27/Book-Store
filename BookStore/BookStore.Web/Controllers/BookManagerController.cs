@@ -3,6 +3,7 @@ using BookStore.Core.Models;
 using BookStore.Core.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,7 +38,7 @@ namespace BookStore.Web
         }
 
         [HttpPost]
-        public ActionResult Create(Book book)
+        public ActionResult Create(Book book, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -45,7 +46,11 @@ namespace BookStore.Web
             }
             else
             {
-
+                if (file != null)
+                {
+                    book.Image = book.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//BookImages//")+ book.Image);
+                }
                 context.Insert(book);
                 context.Commit();
 
@@ -72,7 +77,7 @@ namespace BookStore.Web
         }
 
         [HttpPost]
-        public ActionResult Edit(Book book, string Id)
+        public ActionResult Edit(Book book, string Id, HttpPostedFileBase file)
         {
             Book bookToEdit = context.Find(Id);
 
@@ -87,12 +92,15 @@ namespace BookStore.Web
                     return View(book);
                 }
 
-
+                if (file != null)
+                {
+                    bookToEdit.Image = book.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//BookImages//") + bookToEdit.Image);
+                }
                 bookToEdit.Genre = book.Genre;
                 bookToEdit.Description = book.Description;
                 bookToEdit.Name = book.Name;
                 bookToEdit.Price = book.Price;
-                bookToEdit.Image = book.Image;
 
                 context.Commit();
 
