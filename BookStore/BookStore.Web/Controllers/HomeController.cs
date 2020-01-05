@@ -1,5 +1,6 @@
 ﻿using BookStore.Core.Contracts;
 using BookStore.Core.Models;
+using BookStore.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,25 @@ namespace BookStore.Web.Controllers
             bookGenres = bookGenreContext;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(String Genre = null)
         {
-            List<Book> books = context.Collection().ToList();
-            return View(books);
+            List<Book> books;
+            List<BookGenre> genres = bookGenres.Collection().ToList();
+
+            if (Genre == null)
+            {
+               books= context.Collection().ToList();
+            }
+            else
+            {
+                books = context.Collection().Where(p => p.Genre == Genre).ToList();
+            }
+
+            BookListViewModel model = new BookListViewModel();
+            model.Books = books;
+            model.BookGenres = genres;
+
+            return View(model);
         }
 
         public ActionResult Details(string Id)
