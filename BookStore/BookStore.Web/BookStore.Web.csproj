@@ -384,6 +384,7 @@
     <Content Include="Views\BookGenreManager\Create.cshtml" />
     <Content Include="Views\BookGenreManager\Edit.cshtml" />
     <Content Include="Views\BookGenreManager\Delete.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
