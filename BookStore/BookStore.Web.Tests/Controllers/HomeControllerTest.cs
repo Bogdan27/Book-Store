@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BookStore.Web;
 using BookStore.Web.Controllers;
+using BookStore.Core.Contracts;
+using BookStore.Core.Models;
+using BookStore.Core.ViewModels;
 
 namespace BookStore.Web.Tests.Controllers
 {
@@ -13,42 +16,21 @@ namespace BookStore.Web.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void IndexPageDoesReturnBooks()
         {
-            //// Arrange
-            //HomeController controller = new HomeController();
+            IRepository<Book> bookContext = new Mocks.MockContext<Book>();
+            IRepository<BookGenre> bookGenreContext = new Mocks.MockContext<BookGenre>();
 
-            //// Act
-            //ViewResult result = controller.Index() as ViewResult;
+            bookContext.Insert(new Book());
 
-            //// Assert
-            //Assert.IsNotNull(result);
+            HomeController controller = new HomeController(bookContext, bookGenreContext);
+
+            var result = controller.Index() as ViewResult;
+            var viewModel = (BookListViewModel)result.ViewData.Model;
+
+            Assert.AreEqual(1, viewModel.Books.Count());
         }
 
-        //[TestMethod]
-        //public void About()
-        //{
-        //    // Arrange
-        //    HomeController controller = new HomeController();
 
-        //    // Act
-        //    ViewResult result = controller.About() as ViewResult;
-
-        //    // Assert
-        //    Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-        //}
-
-        //[TestMethod]
-        //public void Contact()
-        //{
-        //    // Arrange
-        //    HomeController controller = new HomeController();
-
-        //    // Act
-        //    ViewResult result = controller.Contact() as ViewResult;
-
-        //    // Assert
-        //    Assert.IsNotNull(result);
-        //}
     }
 }
