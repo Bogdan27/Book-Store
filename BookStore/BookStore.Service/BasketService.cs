@@ -1,5 +1,6 @@
 ﻿using BookStore.Core.Contracts;
 using BookStore.Core.Models;
+using BookStore.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web;
 
 namespace BookStore.Service
 {
-    public class BasketService
+    public class BasketService : IBaskerService
     {
         IRepository<Book> bookContext;
         IRepository<Basket> basketContext;
@@ -97,7 +98,7 @@ namespace BookStore.Service
         public void RemoveFromBasket(HttpContextBase httpContext, string itemId)
         {
             Basket basket = GetBasket(httpContext, true);
-            BasketItem item = basket.BasketItems.FirstOrDefault(i=>i.Id==itemId);
+            BasketItem item = basket.BasketItems.FirstOrDefault(i => i.Id == itemId);
 
             if (item != null)
             {
@@ -105,5 +106,55 @@ namespace BookStore.Service
                 basketContext.Commit();
             }
         }
+
+        public List<BasketItemViewModel> GetBasketItem(HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext, false);
+
+            if (basket != null)
+            {
+                var result = (from ba in basket.BasketItems
+                              join bo in bookContext.Collection() on ba.BookId equals bo.Id
+                              select new BasketItemViewModel()
+                              {
+                                  Id = ba.Id,
+                                  Quantity = ba.Quantity,
+                                  Name = bo.Name,
+                                  Image = bo.Image,
+                                  Price = bo.Price
+                              }
+                            ).ToList();
+                return result;
+            }
+            else
+            {
+                return new List<BasketItemViewModel>();
+            }
+        }
+
+        public BasketSummaryViewModel GetBasketSummary(HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext,false);
+            BasketSummaryViewModel model = new BasketSummaryViewModel(0,0);
+            if (basket != null)
+            {
+                int? basketCount = (from item in basket.BasketItems
+                                    select item.Quantity).Sum();
+                decimal? basketTotal = (from item in basket.BasketItems
+                                        join bo in bookContext.Collection() on item.BookId equals bo.Id
+                                        select item.Quantity*bo.Price).Sum();
+                model.BasketCount = basketCount ?? 0;
+                model.BasketTotal = basketTotal ?? decimal.Zero;
+
+                return model;
+            }
+            else {
+                return model;
+            }
+
+
+        }
+          
+
     }
 }
