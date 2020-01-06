@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\BasketItem.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookEntity.cs" />
     <Compile Include="Models\BookGenre.cs" />

@@ -15,5 +15,7 @@ namespace BookStore.SQLDataAccess
 
         public DbSet<Book> Books { get; set; }
         public DbSet<BookGenre> BookGenres { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
     }
 }
