@@ -14,6 +14,7 @@ namespace BookStore.Core.Models
         [StringLength(20)]
         [DisplayName("Book Name")]
         public string Name { get; set; }
+        public string Author { get; set; }
         public string Description { get; set; }
         [Range(0,1000)]
         public decimal Price { get; set; }

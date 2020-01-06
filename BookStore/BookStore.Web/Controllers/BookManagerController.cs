@@ -100,6 +100,7 @@ namespace BookStore.Web
                 bookToEdit.Genre = book.Genre;
                 bookToEdit.Description = book.Description;
                 bookToEdit.Name = book.Name;
+                bookToEdit.Author = book.Author;
                 bookToEdit.Price = book.Price;
 
                 context.Commit();

@@ -16,13 +16,14 @@
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id);
-            
+
             CreateTable(
                 "dbo.Books",
                 c => new
-                    {
+                {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(maxLength: 20),
+                        Author = c.String(),
                         Description = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Genre = c.String(),
