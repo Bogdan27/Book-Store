@@ -22,11 +22,12 @@
                     <li class="nav-item">@Html.ActionLink("Books Admin", "Index", "BookManager", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Genres Admin", "Index", "BookGenreManager", null, new { @class = "nav-link" })</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
-                @{ 
-                    Html.RenderAction("BasketSummary","Basket");
+                @{
+                    Html.RenderAction("BasketSummary", "Basket");
                 }
-                
+                @Html.Partial("_LoginPartial")
+
+
             </div>
         </div>
     </nav>
