@@ -8,7 +8,7 @@ using System.Web;
 
 namespace BookStore.Core.Contracts
 {
-    public interface IBaskerService
+    public interface IBasketService
     {
         void AddToBasket(HttpContextBase httpContext, string bookId);
         void RemoveFromBasket(HttpContextBase httpContext, string itemId);

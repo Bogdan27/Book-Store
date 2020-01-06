@@ -203,6 +203,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\BookGenreManagerController.cs" />
     <Compile Include="Controllers\BookManagerController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -385,6 +386,8 @@
     <Content Include="Views\BookGenreManager\Edit.cshtml" />
     <Content Include="Views\BookGenreManager\Delete.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\Basket\BasketSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -405,6 +408,10 @@
     <ProjectReference Include="..\BookStore.Core\BookStore.Core.csproj">
       <Project>{D0436DEE-F337-4EA1-8F21-AA1C3E69391C}</Project>
       <Name>BookStore.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookStore.Service\BookStore.Service.csproj">
+      <Project>{1CD931CE-D17D-40F2-925A-88EAAC0A7ACA}</Project>
+      <Name>BookStore.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookStore.SQLDataAccess\BookStore.SQLDataAccess.csproj">
       <Project>{8933064F-C7CF-475B-8E31-C89DEE5E8722}</Project>

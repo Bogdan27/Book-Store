@@ -1,5 +1,6 @@
 using BookStore.Core.Contracts;
 using BookStore.Core.Models;
+using BookStore.Service;
 using BookStore.SQLDataAccess;
 using System;
 
@@ -49,6 +50,10 @@ namespace BookStore.Web
 
             container.RegisterType<IRepository<Book>, SQLRepository<Book>>();
             container.RegisterType<IRepository<BookGenre>, SQLRepository<BookGenre>>();
+            container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
+            container.RegisterType<IRepository<Basket>, SQLRepository<Basket>>();
+            container.RegisterType<IBasketService, BasketService>();
+
 
         }
     }

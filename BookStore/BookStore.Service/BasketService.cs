@@ -10,7 +10,7 @@ using System.Web;
 
 namespace BookStore.Service
 {
-    public class BasketService : IBaskerService
+    public class BasketService : IBasketService
     {
         IRepository<Book> bookContext;
         IRepository<Basket> basketContext;
