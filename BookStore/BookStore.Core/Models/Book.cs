@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Core.Models
 {
-    public class Book : BookEntity
+    public class Book : BaseEntity
     {
 
         [StringLength(20)]

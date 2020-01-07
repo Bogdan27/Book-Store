@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Core.Models
 {
-    public class BookGenre : BookEntity
+    public class BookGenre : BaseEntity
     {
         public string Genre { get; set; }
 

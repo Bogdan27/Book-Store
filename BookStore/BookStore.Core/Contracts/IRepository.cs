@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Core.Contracts
 {
-    public interface IRepository<T> where T:BookEntity
+    public interface IRepository<T> where T:BaseEntity
     {
         IQueryable<T> Collection();
         void Commit();

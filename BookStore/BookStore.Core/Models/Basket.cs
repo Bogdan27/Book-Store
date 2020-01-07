@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Core.Models
 {
-    public class Basket : BookEntity
+    public class Basket : BaseEntity
     {
         public virtual ICollection<BasketItem> BasketItems { get; set; }
 

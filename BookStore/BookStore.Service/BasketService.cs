@@ -120,6 +120,7 @@ namespace BookStore.Service
                                   Id = ba.Id,
                                   Quantity = ba.Quantity,
                                   Name = bo.Name,
+                                  Author=bo.Author,
                                   Image = bo.Image,
                                   Price = bo.Price
                               }
@@ -153,6 +154,13 @@ namespace BookStore.Service
             }
 
 
+        }
+
+        public void ClearBasket(HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext, false);
+            basket.BasketItems.Clear();
+            basketContext.Commit();
         }
           
 

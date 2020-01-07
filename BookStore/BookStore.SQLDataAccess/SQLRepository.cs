@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.SQLDataAccess
 {
-    public class SQLRepository<T> : IRepository<T> where T : BookEntity
+    public class SQLRepository<T> : IRepository<T> where T : BaseEntity
     {
         internal DataContext context;
         internal DbSet<T> dbSet;

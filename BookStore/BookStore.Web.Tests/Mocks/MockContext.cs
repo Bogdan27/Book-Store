@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.Web.Tests.Mocks
 {
-    public class MockContext<T> : IRepository<T> where T : BookEntity
+    public class MockContext<T> : IRepository<T> where T : BaseEntity
     {
         List<T> items;
         string className;
