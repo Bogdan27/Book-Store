@@ -52,6 +52,8 @@ namespace BookStore.Web
             container.RegisterType<IRepository<BookGenre>, SQLRepository<BookGenre>>();
             container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
             container.RegisterType<IRepository<Basket>, SQLRepository<Basket>>();
+            container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
+
             container.RegisterType<IBasketService, BasketService>();
 
 
